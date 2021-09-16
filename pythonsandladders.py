@@ -1,4 +1,5 @@
 import sys
+import random
 
 import pygame
 
@@ -12,22 +13,22 @@ WINDOW_HEIGHT = BLOCK_SIZE * 10
 WINDOW_WIDTH = BLOCK_SIZE * 10
 
 
-def draw_grid():
+def draw_grid(screen):
     for x in range(0, WINDOW_WIDTH, BLOCK_SIZE):
         for y in range(0, WINDOW_HEIGHT, BLOCK_SIZE):
             rect = pygame.Rect(x, y, BLOCK_SIZE, BLOCK_SIZE)
-            pygame.draw.rect(SCREEN, ACCENT_GREEN, rect, 1)
+            pygame.draw.rect(screen, ACCENT_GREEN, rect, 1)
 
 
 def main():
     global SCREEN, CLOCK
     pygame.init()
     SCREEN = pygame.display.set_mode((WINDOW_WIDTH, WINDOW_HEIGHT))
-    # CLOCK = pygame.time.Clock()
+    CLOCK = pygame.time.Clock()
     SCREEN.fill(LIGHT_GRAY)
 
     while True:
-        draw_grid()
+        draw_grid(SCREEN)
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 pygame.quit()
